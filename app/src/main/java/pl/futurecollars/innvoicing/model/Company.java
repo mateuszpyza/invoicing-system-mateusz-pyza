@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Company {
-  private int id;
-  private int taxIdentificationNumber;
+  private String taxIdentificationNumber;
   private String address;
+  private String name;
 
 }

@@ -2,18 +2,21 @@ package pl.futurecollars.innvoicing.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Invoice {
 
-  private Long id;
+  private int id;
   private LocalDateTime date;
-  private String creatorName;
-  private String destinationCompanyName;
+  private Company seller;
+  private Company buyer;
   private List<InvoiceEntry> entries;
 
-
+  public Invoice(LocalDateTime date, Company seller, Company buyer, List<InvoiceEntry> entries) {
+    this.date = date;
+    this.seller = seller;
+    this.buyer = buyer;
+    this.entries = entries;
+  }
 }

@@ -1,6 +1,6 @@
 package pl.futurecollars.innvoicing.service
 
-import pl.futurecollars.innvoicing.db.Database
+
 import pl.futurecollars.innvoicing.db.memory.InMemoryDatabase
 import pl.futurecollars.innvoicing.helpers.TestHelper
 import spock.lang.Specification
@@ -44,5 +44,16 @@ class InvoiceServiceTest extends Specification {
         service.delete(1)
         then:
         service.getAll().size() == size - 1
+    }
+
+
+    def "update() should do nothing"() {
+        given:
+        String textDatabase = service.getAll().toString()
+        when:
+        service.update(1000,TestHelper.invoice(1))
+        then:
+        textDatabase == service.getAll().toString()
+
     }
 }

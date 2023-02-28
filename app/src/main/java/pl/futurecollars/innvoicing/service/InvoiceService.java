@@ -23,8 +23,11 @@ public  class InvoiceService {
   public Optional<Invoice> getById(int id) {
     return database.getById(id);
   }
-  public int update(int id, Invoice updatedInvoice) {
-    return database.update(id,updatedInvoice);
+  public void update(int id, Invoice updatedInvoice) {
+     database.update(id,updatedInvoice);
+  }
+  public void delete(int id) {
+     database.delete(id);
   }
 
 }

@@ -44,7 +44,7 @@ public class App {
     int id = service.save(invoice1);
 
 
-//     id = service.save(invoice2);
+ id = service.save(invoice2);
 
 
      /*

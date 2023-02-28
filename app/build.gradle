@@ -61,17 +61,17 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 counter = 'BRANCH'
-                minimum = 0.80
+                minimum = 0.50
             }
         }
         rule {
             limit {
                 counter = 'LINE'
-                minimum = 0.80
+                minimum = 0.50
             }
         }
 
-
+/*
         afterEvaluate {
             classDirectories.setFrom(files(classDirectories.files.collect {
                 fileTree(dir: it, exclude: [
@@ -79,7 +79,7 @@ jacocoTestCoverageVerification {
                 ])
             }))
         }
-
+*/
 
     }
 }

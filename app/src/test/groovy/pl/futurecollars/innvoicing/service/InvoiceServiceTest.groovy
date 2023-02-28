@@ -51,7 +51,7 @@ class InvoiceServiceTest extends Specification {
         given:
         String textDatabase = service.getAll().toString()
         when:
-        service.update(1000,TestHelper.invoice(1))
+        service.update(1000, TestHelper.invoice(1))
         then:
         textDatabase == service.getAll().toString()
 

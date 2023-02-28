@@ -23,7 +23,7 @@ class TestHelper {
     static product(int id) {
 
         InvoiceEntry.builder()
-                .description(id%2?"Buyer":"Seller" + id.toString())
+                .description(id % 2 ? "Buyer" : "Seller" + id.toString())
                 .price(new BigDecimal(1999))
                 .vatValue(Vat.VAT8.getRate())
                 .vatRate(Vat.VAT8)

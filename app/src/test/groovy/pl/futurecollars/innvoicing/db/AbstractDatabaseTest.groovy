@@ -49,7 +49,7 @@ abstract class AbstractDatabaseTest extends Specification {
         given:
         String textDatabase = database.getAll().toString()
         when:
-        database.update(1000,TestHelper.invoice(1))
+        database.update(1000, TestHelper.invoice(1))
         then:
         textDatabase == database.getAll().toString()
 
@@ -68,7 +68,7 @@ abstract class AbstractDatabaseTest extends Specification {
     //def "delete() should return -1 when id non existing"() {
     //    expect:
     //    database.delete(10000) == -1
-   // }
+    // }
 
 
 }

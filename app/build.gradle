@@ -14,6 +14,7 @@ plugins {
     id 'application'
 
     id 'checkstyle'
+    id 'jacoco'
 }
 
 repositories {
@@ -31,6 +32,12 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
 }
 
 application {
@@ -41,4 +48,38 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = 'BRANCH'
+                minimum = 0.50
+            }
+        }
+        rule {
+            limit {
+                counter = 'LINE'
+                minimum = 0.50
+            }
+        }
+
+/*
+        afterEvaluate {
+            classDirectories.setFrom(files(classDirectories.files.collect {
+                fileTree(dir: it, exclude: [
+                        'pl/futurecollars/invoicing/db/*'
+                ])
+            }))
+        }
+*/
+
+    }
 }

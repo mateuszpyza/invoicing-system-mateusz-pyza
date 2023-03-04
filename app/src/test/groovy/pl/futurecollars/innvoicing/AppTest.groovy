@@ -15,5 +15,7 @@ class AppTest extends Specification {
 
         then:
         result != null
+        and:
+        app.main()
     }
 }

@@ -21,6 +21,11 @@ repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
 
 dependencies {
     // Use the latest Groovy version for Spock testing
@@ -38,6 +43,14 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.26'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.1'
+
+    //implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 }
 
 application {
@@ -61,13 +74,13 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 counter = 'BRANCH'
-                minimum = 0.50
+                minimum = 0.70
             }
         }
         rule {
             limit {
                 counter = 'LINE'
-                minimum = 0.50
+                minimum = 0.70
             }
         }
 

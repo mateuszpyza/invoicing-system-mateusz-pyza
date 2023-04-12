@@ -1,25 +1,23 @@
-package pl.futurecollars.innvoicing.db.memory;
+package pl.futurecollars.invoicing.db.memory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-
-import pl.futurecollars.innvoicing.db.Database;
-import pl.futurecollars.innvoicing.model.Invoice;
-
+import pl.futurecollars.invoicing.db.Database;
+import pl.futurecollars.invoicing.model.Invoice;
 
 public class InMemoryDatabase implements Database {
 
-  private static final Map<Integer, Invoice> invoices = new HashMap<>();
+  private final Map<Integer, Invoice> invoices = new HashMap<>();
   private int nextId = 1;
 
   @Override
   public int save(Invoice invoice) {
     invoice.setId(nextId);
     invoices.put(nextId, invoice);
+
     return nextId++;
   }
 
@@ -35,9 +33,12 @@ public class InMemoryDatabase implements Database {
 
   @Override
   public void update(int id, Invoice updatedInvoice) {
-    if (invoices.containsKey(id)) {
-      Objects.requireNonNull(invoices.put(id, updatedInvoice));
+    if (!invoices.containsKey(id)) {
+      throw new IllegalArgumentException("Id " + id + " does not exist");
     }
+
+    updatedInvoice.setId(id);
+    invoices.put(id, updatedInvoice);
   }
 
   @Override

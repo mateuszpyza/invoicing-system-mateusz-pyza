@@ -1,10 +1,11 @@
-package pl.futurecollars.innvoicing.db;
+package pl.futurecollars.invoicing.db;
 
 import java.util.List;
 import java.util.Optional;
-import pl.futurecollars.innvoicing.model.Invoice;
+import pl.futurecollars.invoicing.model.Invoice;
 
 public interface Database {
+
   int save(Invoice invoice);
 
   Optional<Invoice> getById(int id);
@@ -15,5 +16,5 @@ public interface Database {
 
   void delete(int id);
 
-
 }
+

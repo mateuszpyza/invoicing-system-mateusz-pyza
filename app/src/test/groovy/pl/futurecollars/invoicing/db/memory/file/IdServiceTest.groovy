@@ -1,6 +1,5 @@
-package pl.futurecollars.invoicing.db.file
+package pl.futurecollars.invoicing.db.memory.file
 
-import pl.futurecollars.invoicing.db.memory.file.IdService
 import pl.futurecollars.invoicing.utils.FilesService
 import spock.lang.Specification
 

@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pl.futurecollars.invoicing.db.Database;
-import pl.futurecollars.invoicing.db.memory.InMemoryDatabase;
 import pl.futurecollars.invoicing.utils.FilesService;
 import pl.futurecollars.invoicing.utils.JsonService;
 
@@ -17,11 +16,11 @@ public class DatabaseConfiguration {
   private static final String ID_FILE_NAME = "id.txt";
   private static final String INVOICES_FILE_NAME = "invoices.txt";
 
-
   @Bean
   public FilesService fileService() {
     return new FilesService();
   }
+
   @Bean
   public IdProvider idProvider(FilesService filesService) throws IOException {
     Path idFilePath = Files.createTempFile(DATABASE_LOCATION, ID_FILE_NAME);

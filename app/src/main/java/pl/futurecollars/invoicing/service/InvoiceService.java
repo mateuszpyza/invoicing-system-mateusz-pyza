@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import pl.futurecollars.invoicing.db.Database;
 import pl.futurecollars.invoicing.model.Invoice;
 
+@Service
 public class InvoiceService {
 
   private static Database database;

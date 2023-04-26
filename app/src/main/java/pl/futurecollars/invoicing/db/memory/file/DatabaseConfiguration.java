@@ -17,6 +17,11 @@ public class DatabaseConfiguration {
   private static final String INVOICES_FILE_NAME = "invoices.txt";
 
   @Bean
+  public FilesService fileService() {
+    return new FilesService();
+  }
+
+  @Bean
   public IdProvider idProvider(FilesService filesService) throws IOException {
     Path idFilePath = Files.createTempFile(DATABASE_LOCATION, ID_FILE_NAME);
     return new IdProvider(idFilePath, filesService);
